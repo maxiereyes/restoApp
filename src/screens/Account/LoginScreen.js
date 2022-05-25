@@ -3,6 +3,8 @@ import React from 'react'
 import { Image } from '@rneui/base'
 import { useNavigation } from '@react-navigation/native'
 import { screen } from '../../utils'
+import LoginForm from './LoginForm'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const LoginScreen = () => {
     const navigation = useNavigation()
@@ -10,14 +12,16 @@ const LoginScreen = () => {
     const goToRegister = () => navigation.navigate(screen.account.signUp)
 
   return (
-    <ScrollView style={{backgroundColor: 'white'}}>
+    <KeyboardAwareScrollView style={{backgroundColor: 'white'}}>
         <Image source={require('../../../assets/RESTOAPP.png')} style={{...styles.image}} />
-        <Text>LoginScreen</Text>
 
-        <View>
-            <Text onPress={goToRegister}>Registrarse</Text>
+        <View style={{marginHorizontal: 20}}>
+            <LoginForm />
+            <Text style={{textAlign: 'center', marginTop: 20}}>
+                ¿Aun no tienes cuenta? <Text  onPress={goToRegister} style={{...styles.btnRegister}}>Registrate</Text>
+            </Text>
         </View>
-    </ScrollView>
+    </KeyboardAwareScrollView>
   )
 }
 
@@ -28,5 +32,9 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         height: 250,
         width: '100%',
+    },
+    btnRegister: {
+        color: '#00a680',
+        fontWeight: 'bold'
     }
 })

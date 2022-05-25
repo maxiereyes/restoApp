@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         height: 250,
         width: '100%',
-        marginBottom: 20
     },
     content: {
         marginHorizontal: 20
