@@ -4,10 +4,15 @@ import { Icon } from '@rneui/base'
 import { useNavigation } from '@react-navigation/native'
 import { screen } from '../../utils'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { db } from '../../utils/firebase'
+import LoadingModal from '../../components/shared/LoadingModal'
+import ListRestaurants from './ListRestaurants'
 
 const RestaurantsScreen = () => {
   const navigation = useNavigation()
   const [currentUser, setCurrentUser] = useState(null)
+  const [resto, setResto] = useState(null)
 
   const goToAddRestaurant = () => {
     navigation.navigate(screen.restaurant.addRestaurant)
@@ -21,9 +26,26 @@ const RestaurantsScreen = () => {
     onAuthStateChanged(auth, (user) => setCurrentUser(user))
   }, [])
 
+  useEffect(() => {
+    const q = query(
+      collection(db, 'restaurants'),
+      orderBy('createdAt', 'desc')
+    )
+    onSnapshot(q, (snapshot) => setResto(snapshot.docs))
+
+  }, [])
+
   return (
     <View style={styles.container}>
-      <Text>Restaurants</Text>
+      {
+        !resto ? (
+          <LoadingModal show text="Cargando" />
+        ) : (
+          <ListRestaurants data={resto} />
+        )
+      }
+
+      
       {currentUser ? (
         <Icon 
           reverse
