@@ -1,21 +1,29 @@
 const restaurantStack = {
-    tab: "Restaurant"
+    tab: "RestaurantTab",
+    restaurants: "Restaurants",
+    addRestaurant: "AddRestaurant"
 }
 
 const favoriteStack = {
-    tab: "Favorite"
+    tab: "FavoriteTab",
+    favorites: "Favorites"
 }
 
 const rankingStack = {
-    tab: "Ranking"
+    tab: "RankingTab",
+    rankings: 'Rankings'
 }
 
 const searchStack = {
-    tab: "Search"
+    tab: "SearchTab",
+    search: "Search"
 }
 
 const accountStack = {
-    tab: "Account"
+    tab: "AccountTab",
+    account: "Account",
+    login: 'Login',
+    signUp: 'SignUp'
 }
 
 export const screen = {
