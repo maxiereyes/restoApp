@@ -28,3 +28,15 @@ export const validationSchemaChangePass = () => {
         repeatPassword: Yup.string().required('La contraseña es obligatoria').oneOf([Yup.ref('newPassword')], 'Las contraseñas tienen que ser iguales').min(6, 'La contraseña debe tener al menos 6 caracteres')
     })
 }
+
+export const validationSchemaAddResto = () => {
+    return Yup.object({
+        name: Yup.string().required('Campo obligatorio'),
+        address: Yup.string().required('Campo obligatorio'),
+        phone: Yup.string().required('Campo obligatorio'),
+        email: Yup.string().email('No es una email valido').required('Campo obligatorio'),
+        description: Yup.string().required('Campo obligatorio'),
+        location: Yup.object().required('Localizacion requerida'),
+        images: Yup.array().required('Imagen requerida').min(1, 'Debe subir al menos 1 imagen')
+    })
+}
