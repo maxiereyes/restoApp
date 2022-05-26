@@ -3,6 +3,7 @@ import { screen } from '../utils'
 import RestaurantsScreen from '../screens/Restaurants/RestaurantsScreen'
 import AddRestaurantScreen from '../screens/Restaurants/AddRestaurantScreen'
 import RestaurantDetailScreen from '../screens/Restaurants/RestaurantDetailScreen'
+import AddReviewForm from '../screens/Restaurants/AddReviewForm'
 
 const Stack = createNativeStackNavigator()
 
@@ -12,6 +13,7 @@ export const RestaurantStack = () => {
             <Stack.Screen name={screen.restaurant.restaurants} component={RestaurantsScreen} options={{title: "Restaurantes"}} />
             <Stack.Screen name={screen.restaurant.addRestaurant} component={AddRestaurantScreen} options={{title: "Nuevo Restaurante"}} />
             <Stack.Screen name={screen.restaurant.deatilRestaurant} component={RestaurantDetailScreen} options={{title: "Restaurante"}} />
+            <Stack.Screen name={screen.restaurant.addReviewRestaurant} component={AddReviewForm} options={{title: "Nueva Opinion"}} />
         </Stack.Navigator>
     )
 }

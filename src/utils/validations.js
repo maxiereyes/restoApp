@@ -40,3 +40,10 @@ export const validationSchemaAddResto = () => {
         images: Yup.array().required('Imagen requerida').min(1, 'Debe subir al menos 1 imagen')
     })
 }
+
+export const validationSchemaAddReview = () => {
+    return Yup.object({
+        name: Yup.string().required('Campo obligatorio'),
+        comment: Yup.string().required('Campo obligatorio'),
+    })
+}

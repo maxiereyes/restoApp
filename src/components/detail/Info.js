@@ -24,7 +24,7 @@ const Info = ({restaurant}) => {
     ]
 
     return (
-        <View style={{marginTop: 20 }}>
+        <View style={{marginTop: 20, marginHorizontal: 15 }}>
             <Text style={{fontSize: 20, fontWeight: 'bold', marginBottom: 15}}>Informacion sobre el restaurante</Text>
             <Map location={restaurant.location} name={restaurant.name}/>
             {
