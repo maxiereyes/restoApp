@@ -8,6 +8,7 @@ import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../../utils/firebase'
 import LoadingModal from '../../components/shared/LoadingModal'
 import ListRestaurants from './ListRestaurants'
+import Loading from '../../components/shared/Loading'
 
 const RestaurantsScreen = () => {
   const navigation = useNavigation()
@@ -34,6 +35,8 @@ const RestaurantsScreen = () => {
     onSnapshot(q, (snapshot) => setResto(snapshot.docs))
 
   }, [])
+
+  if (!resto) return <Loading show text='Cargando Restaurantes' />
 
   return (
     <View style={styles.container}>
